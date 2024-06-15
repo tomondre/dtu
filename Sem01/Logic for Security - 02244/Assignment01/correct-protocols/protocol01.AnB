@@ -1,0 +1,20 @@
+Protocol: FirstIteration
+
+Types: Agent C,S,ps; # client, server, payment service
+
+# Prerequisite: A secure connection between the client and the server
+Knowledge:
+   S: order, payment_information, KSC; # Secret is exchanged from authentication protocol
+   C: order_confirmation, inv(pk(C)), KSC;
+   sp: payment_confirmation, inv(pk(sp)), pk(sp);
+   where sp!=C, sp!=S, C!=S
+Actions:
+    C -> S: {|order, payment_information|}KSC # Send secret together with order information
+    S -> ps: {payment_information}pk(ps) # The payment information is send to the payment service (most likely encrypted)
+    sp -> S: {payment_confirmation}pk(S) # Encrypted with S public key
+    S -> C: {|order_confirmation|}KSC # Send order confirmation to the client encrypted with secret
+Goals:
+
+
+# There will be a problem with non-repudiation if the payment service does not send confirmation to the client
+

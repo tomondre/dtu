@@ -1,0 +1,22 @@
+-- Ticket Purchase Protocol
+-- Roles definition
+Roles:
+  C, S, Bank
+
+-- Messages exchange
+Actions:
+  -- Step 1: Request Ticket
+  C -> S : C, EventID, Date, PK_C
+  -- Step 2: Payment Authorization
+  S -> C : S, Amount, TransactionID, PK_S
+  C -> Bank : C, S, Amount, TransactionID, sign(C, (C, S, Amount, TransactionID))
+  Bank -> C : {Authorization, TransactionID, sign(Bank, (Authorization, TransactionID))}_PK_C
+  -- Step 3: Finalize Purchase
+  C -> S : {Authorization, TransactionID, sign(C, (Authorization, TransactionID))}_PK_S
+  S -> C : {Ticket, EventID, Date, sign(S, (Ticket, EventID, Date))}_PK_C
+
+-- Goals definition
+Goals:
+  Secrecy_of Ticket
+  Authenticity_on S -> C : {Ticket, EventID, Date, sign(S, (Ticket, EventID, Date))}_PK_C
+

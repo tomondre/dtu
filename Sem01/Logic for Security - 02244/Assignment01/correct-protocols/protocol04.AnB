@@ -1,0 +1,16 @@
+Protocol: SecureTicketPlatform
+Types: Agent A, B, s;
+       Function pk, sk;
+       Number NA, NB;
+Knowledge:
+  A: A, B, s, sk(A,s), pk(B), pk(s); # Client app
+  B: A, B, s, sk(B,s), pk(B), inv(pk(B)), pk(s); # Ticket platform
+  s: A, B, s, pk(s), pk(B), inv(pk(s)), sk(A,s); # Payment Provider
+Actions:
+  A *->* B: OrderRequest
+  B *->* A: NB
+  A -> s: { PaymentInfo, NB, NA, A, B }pk(s)
+  s -> B: { OrderConfirmation, NB, A, B }pk(B), {| OrderConfirmation, NA, A, B |}sk(A,s)
+  B *->* A: {| OrderConfirmation, NA, A, B |}sk(A,s), Ticket
+Goals:
+  Ticket secret between A, B

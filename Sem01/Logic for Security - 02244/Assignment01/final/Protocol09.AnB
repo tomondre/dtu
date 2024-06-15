@@ -1,0 +1,27 @@
+Protocol: SecureTicketPlatform
+Types: Agent Customer, PaymentProvider, platform;
+       Function pk, sk;
+       Number NA, NB;
+       Symmetric_key SessionSecret;
+Knowledge:
+  Customer:         Customer, PaymentProvider, platform, sk(Customer,platform), pk(platform);
+  PaymentProvider:  Customer, PaymentProvider, platform, sk(PaymentProvider,platform), pk(PaymentProvider), inv(pk(PaymentProvider));
+  platform:         Customer, PaymentProvider, platform, sk(Customer, platform), sk(PaymentProvider, platform), pk(platform), inv(pk(platform));
+  #where Customer!=PaymentProvider
+Actions:
+  # Order Request confirmation and authentication between Customer and PaymentProvider
+  Customer -> PaymentProvider: Customer, NA, OrderRequest
+  PaymentProvider -> platform: Customer, NA, PaymentProvider, NB, OrderRequest
+  platform -> PaymentProvider: {| Customer, PaymentProvider, NB, SessionSecret, OrderConfirmation |}sk(PaymentProvider, platform), {| Customer, PaymentProvider, NA, NB, SessionSecret, OrderConfirmation |}sk(Customer, platform)
+  PaymentProvider -> Customer: {| Customer, PaymentProvider, NA, NB, SessionSecret, OrderConfirmation |}sk(Customer, platform)
+
+  # Payment
+  Customer -> PaymentProvider: {| PaymentInfo, NA, NB |}SessionSecret
+  PaymentProvider -> platform: {| PaymentConfirmation , NA, NB |}SessionSecret
+  platform -> Customer:        {| PaymentConfirmation, Ticket, NA, NB |}sk(Customer, platform)
+Goals:
+  Ticket secret between Customer, platform
+  SessionSecret secret between Customer, PaymentProvider, platform
+  PaymentInfo secret between Customer, PaymentProvider
+  Customer authenticates platform on PaymentProvider, SessionSecret
+  PaymentProvider authenticates platform on SessionSecret, Customer

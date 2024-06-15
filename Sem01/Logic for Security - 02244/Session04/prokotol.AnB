@@ -1,0 +1,34 @@
+Types:
+  agent A, B, S;
+  symmetric_key SK;
+  number NA, NB;
+  ticket Ticket;
+
+Functions:
+  request, payment_details, payment_ack, ticket_issuance;
+
+Knowledge:
+  A: A, B, S, pk(A), pk(B), pk(S);
+  B: A, B, S, pk(A), pk(B), pk(S);
+  S: A, B, S, pk(A), pk(B), pk(S);
+
+Actions:
+  // Step 1: A requests a ticket from B
+  A -> B : {A, NA, request}pk(B);
+  
+  // Step 2: B responds with session key and nonce
+  B -> A : {B, NB, SK}pk(A);
+  
+  // Step 3: A sends payment details to S
+  A -> S : {payment_details, A, B, NA, NB}pk(S);
+  
+  // Step 4: S processes payment and acknowledges to B
+  S -> B : {payment_ack, A, B, NA, NB}pk(B);
+  
+  // Step 5: B issues ticket to A using the session key
+  B -> A : {ticket_issuance, Ticket}SK;
+
+Goals:
+  Secrecy of SK, Ticket;
+  Authentication on A, B;
+

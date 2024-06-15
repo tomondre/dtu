@@ -1,0 +1,27 @@
+Protocol: SecureTicketPlatform
+Types: Agent A, B, s;
+       Function pk, sk;
+       Number NA, NB;
+       Symmetric_key TempSecret;
+Knowledge:
+  A: A, B, s, pk(s), sk(A,B); # Client app. sk(A,B) established by user login
+  B: A, B, s, sk(A,B), sk(B, s); # Ticketing platform. sk(A,B) established by user login
+  s: A, B, s, pk(s), inv(pk(s)), sk(B, s); # Payment provider
+  where A!=B
+Actions:
+  # Order Request and Payment
+  A -> B: {| OrderRequest, { PaymentInfo, TempSecret }sk(PaymentInfo, TempSecret), NA |}sk(A,B)
+  B -> s: {| { PaymentInfo, TempSecret }sk(PaymentInfo, TempSecret), NA, NB, A, B |}sk(B, s)
+  s -> B: {| OrderConfirmation, A, B, NB |}sk(B, s)
+  B -> A: {| Ticket, A, B, NB, NA |}sk(A,B)
+
+  # Payment Validation
+  A -> s: {| A, NA, B |}sk(PaymentInfo, TempSecret)
+  s -> A: {| OrderConfirmation, A, NA |}sk(PaymentInfo, TempSecret)
+Goals:
+  OrderConfirmation secret between A, B, s;
+  PaymentInfo secret between A, s;
+  TempSecret secret between A, s;
+
+
+# Check the way how

@@ -1,0 +1,17 @@
+Protocol: SecureTicketPlatform
+Types: Agent A, B, s;
+       Function pk;
+       Number NA, NB, NS;
+       Format f1, f2
+Knowledge:
+  A: A, B, s, order_request, payment_info;
+  B: A, B, s, inv(pk(B)), pk(B), pk(s), payment_info, payment_confirmation, ticket, order_confirmation;
+  s: A, B, s, inv(pk(s)), pk(s), pk(B), payment_confirmation;
+Actions:
+  A *->* B: order_request, payment_info, NA
+  B -> s: { payment_info, NB, NA }pk(s)
+  s -> B: { payment_confirmation, NS, NA, NB }pk(B)
+  B *->* A: NA, NB, NS, ticket, order_confirmation
+Goals:
+  ticket secret between A, B
+  payment_info secret between A, B

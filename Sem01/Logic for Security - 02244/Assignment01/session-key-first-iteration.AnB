@@ -1,0 +1,36 @@
+Protocol: SimpleTicketPurchase
+
+Types:
+  Agent A, B, S;
+  Number Na, Nb, Ns;
+  Symmetric_key SK;
+  Ticket T;
+  Function pk;
+
+Knowledge:
+  A: A, KAB, pk(B), pk(s);
+  B: B, KAB, SK, sk(B), pk(A), pk(s);
+  s: s, sk(s), pk(A), pk(B);
+
+Actions:
+  # Step 1: A selects a ticket and sends the request encrypted with SK (obtained from authentication)
+  A -> B: {T, Na}SK
+
+  # Step 2: B confirms ticket availability and sends payment request to A
+  B -> A: {T, payment_request, Na}KAB
+
+  # Step 3: A sends payment details to Payment Processing Server S encrypted with S's public key
+  A -> s: {T, payment_details, Na}pk(s)
+
+  # Step 4: S confirms payment and sends confirmation to A
+  s -> A: {payment_confirmation, Na}pk(A)
+
+  # Step 5: A forwards payment confirmation to B
+  A -> B: {payment_confirmation, Na}KAB
+
+  # Step 6: B issues the ticket to A
+  B -> A: {ticket, Na}KAB
+
+Goals:
+  # Ensure the ticket T is only known to A and B
+  Secrecy of T;

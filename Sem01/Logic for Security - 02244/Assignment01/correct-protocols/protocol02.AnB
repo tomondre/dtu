@@ -1,0 +1,16 @@
+Protocol: SecureTicketPlatform
+Types: Agent A, B, s;
+       Symmetric_key PWAB;
+       Function pk;
+       Format f1, f2;
+Knowledge:
+  A: A, B, s, sk(A,s), order_request, payment_info;
+  B: A, B, s, sk(B,s), payment_info, payment_confirmation, ticket, order_confirmation;
+  s: A, B, s, sk(A,s), sk(B,s), payment_confirmation;
+Actions:
+  A *->* B: order_request, payment_info
+  B -> s: {| payment_info |}sk(B, s)
+  s -> B: { payment_confirmation, A, B }sk(B, s)
+  B *->* A: ticket, order_confirmation, A, B
+Goals:
+  ticket secret between A, B

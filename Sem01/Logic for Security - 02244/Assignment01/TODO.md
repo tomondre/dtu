@@ -1,0 +1,1 @@
+* Check low entropy for the assignment

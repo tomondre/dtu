@@ -1,0 +1,6 @@
+
+.idea/aws.xml
+.DS_Store
+.idea/
+./AnB examples/*
+.obsidian/
