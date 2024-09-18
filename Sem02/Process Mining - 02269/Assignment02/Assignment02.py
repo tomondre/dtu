@@ -2,8 +2,6 @@ import csv
 from io import StringIO
 import xml.etree.ElementTree as ElementTree
 from datetime import datetime
-from numbers import Number
-
 
 def log_as_dictionary(csv_str):
     logs = {}
@@ -92,7 +90,7 @@ def dependency_graph_file(logs):
 
 
 def main():
-    log = read_from_file("extension-log.xes")
+    log = read_from_file("../Assignment03/extension-log.xes")
     for case_id in sorted(log):
         print((case_id, len(log[case_id])))
     case_id = "case_123"
