@@ -1,7 +1,7 @@
 Protocol: task2
 
 Types: Agent A,B,hm;
-       Number X,Y,g,M;
+       Number X,Y,g,M,NB;
        Function ck,sk
 
 Knowledge: A: A,B,hm,ck(A,hm),sk(A,hm),g;
@@ -9,12 +9,12 @@ Knowledge: A: A,B,hm,ck(A,hm),sk(A,hm),g;
 	   hm: A,B,hm,ck(A,hm),sk(A,hm),ck(B,hm),sk(B,hm),g
 
 Actions:
-A->B:  A,B,exp(g,X),NA,{|A,B,exp(g,X)|}ck(A,hm)
-B->hm: {|A,B,exp(g,X),exp(g,Y),NA,NB,
+A->B:  A,B,exp(g,X),{|A,B,exp(g,X)|}ck(A,hm)
+B->hm: {|A,B,exp(g,X),exp(g,Y),NB,
        {|A,B,exp(g,X)|}ck(A,hm)|}ck(B,hm)
-hm->B: {|B,A,{|B,A,exp(g,X),exp(g,Y),NA,NB|}sk(A,hm)|}sk(B,hm)
-B->A:  exp(g,Y),{|B,A,exp(g,X),exp(g,Y),NA,NB|}sk(A,hm)
-A->B:  {|M,NA,NB|}exp(exp(g,X),Y)
+hm->B: {|B,A,{|B,A,exp(g,X),exp(g,Y),NB|}sk(A,hm)|}sk(B,hm)
+B->A:  exp(g,Y),{|B,A,exp(g,X),exp(g,Y),NB|}sk(A,hm)
+A->B:  {|M,NB|}exp(exp(g,X),Y)
 
 Goals:
 B authenticates A on M
