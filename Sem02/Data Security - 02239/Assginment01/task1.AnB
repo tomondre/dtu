@@ -10,16 +10,19 @@ Knowledge: A: A,B,s,pk(s),pk(B),sk(A,s);
 	   B: A,B,s,pk(s),pk(B),inv(pk(B))
    where A!=B, A!=s, B!=s
 Actions:
-# A->B: {A,B,NA,KAB}pk(B)
-# B->A: {|A,B,NA|}KAB
-# A->s: {|A,NA|}sk(A,s)
-# s->B: {A,NA,s}inv(pk(s))
-# B->A: {|A,B,NA,Payload|}KAB
-
-
-A->s: {|A,NA, KAB, pk(B)|}sk(A,s)
+A->s: {|A,NA,B,pk(B),KAB|}sk(A,s)
+s->A: {|{A,NA,s}inv(pk(s))|}sk(A,s)
+A->s: X
 s->B: {{A,NA,s,KAB}inv(pk(s))}pk(B)
-B->A: {|A,B,NA, Payload|}KAB
+B->A: {|A,B,NA,Payload|}KAB
+
+
+# A->B: {{A,NA,s}inv(pk(s))}pk(B)
+
+
+
+# A->B: {A,B,NA,KAB}pk(B)
+# B->A: {|A,B,NA,Payload|}KAB
 
 Goals:
 
