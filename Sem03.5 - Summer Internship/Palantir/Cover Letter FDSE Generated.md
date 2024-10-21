@@ -1,0 +1,17 @@
+Ofc with my ideas `d-_-b`
+
+Dear Hiring Manager,
+
+I am writing to express my interest in the Software Engineer Internship position at Palantir Technologies. As a highly motivated Computer Engineering student with hands-on experience in building robust software solutions, I am excited about the opportunity to contribute to Palantir’s mission of enabling data-driven decision-making across critical sectors. Having followed Palantir’s development closely as both an investor and a tech enthusiast since 2021, I am deeply inspired by the impact your technologies have across industries, and I am eager to be part of this journey.
+
+At **VIA University College**, I have developed strong proficiency in **Java** and have worked extensively with **Spring Boot** and **JPA** from my first semester through to my final year. These tools have been instrumental in various projects, where I designed and built scalable web applications that involved complex data handling and processing. This experience has provided me with a solid foundation in back-end development, aligning with Palantir’s use of Java in its software infrastructure. I am confident that my ability to write clean, efficient, and scalable code will enable me to quickly contribute to products like **Gotham** and **Foundry**.
+
+Additionally, I have hands-on experience with **Go**, which I used during my **Bachelor’s project** with the **Danish Business Authority**. I worked with the **Gin framework** for building high-performance web applications and utilized **Gorm ORM** for managing database interactions. This experience has sharpened my skills in developing infrastructure-related projects—skills that I am eager to apply to Palantir’s software development efforts, especially in areas related to backend services and cloud infrastructure.
+
+In my internship at **Cisco (Slido)**, I led the design and implementation of an OAuth client management platform, which drastically improved the efficiency of user authorization processes. My ability to take ownership of projects, from initial design to final deployment, reflects Palantir’s core value of **ownership**. Similarly, at the **Danish Business Authority**, I spearheaded the development of a log aggregation system for Kubernetes, enhancing observability and easing the developer experience—a project that aligns with Palantir’s focus on building tools that address real-world problems through collaboration and trust.
+
+Beyond technical skills, I’ve gained valuable insights into Palantir’s unique approach to solving complex problems through conversations with a **Tech Lead at Palantir Switzerland**. His experiences have further fueled my passion for the company and deepened my understanding of how Palantir’s solutions drive meaningful change across various industries. These insights, combined with my technical background and my drive for continuous learning, make me a strong candidate for this role.
+
+I am excited about the possibility of joining Palantir and contributing to your team’s efforts to empower organizations with data-driven insights. Thank you for considering my application. I look forward to discussing how my experience and skills can contribute to Palantir’s continued success.
+
+Sincerely,  
