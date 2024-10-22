@@ -1,0 +1,14 @@
+Dear Hiring Manager,
+
+I am writing to express my interest in the 2025 Technology Summer Internship Program with UBS Group Compliance, Regulatory & Governance Technology. When reading the internship description, I was excited to see the emphasis being put on cloud and DevOps technologies, as these are the areas where I have focused my studies and practical experience. Having an acquaintance who has been part of the UBS team for over five years, helped me to gain valuable insights into the positive work environment, career development opportunities, and the collaborative culture at UBS, which motivates me to join the company.
+
+I have developed a strong understanding of cloud platforms and technologies through various work experiences. At Cisco, I designed cloud solutions using AWS, developed and deployed OAuth client management platform. This work led to improvements in scalability and efficiency. During my time at the Danish Business Authority, I led a Kubernetes-related project with the goal of building a custom logging system for kubernetes distribution, improving observability and simplifying the developer experience. At Qualcomm, I worked on AWS infrastructure, using AWS CDK and Terraform to automate creation of cloud resources, with the goal of reducing deployment times and improving infrastructure.  
+
+Outside of work and school, I am deeply commited to expanding my cloud knowledge through personal projects and number of certifications. I have successfully undertaken exams in AWS Machine Learning and in three AWS Associate-level certifications, as well as Kubernetes (KCNA) and Hashicorp Terraform credentials. I am actively involved in the cloud and DevOps community, attending KubeCon 2024 in Paris and several Kubernetes Community meetups. These experiences have allowed me to deepen my understanding of cloud technologies and connect with many professionals in the field.   
+
+Currently I am pursuing a Masters Degree at Technical University of Denmark in Copenhagen and have completed my bachelor's degree in Software Technology and Engineering at VIA University College. The teaching style at both institutions supports collaboration and independent learning, which has helped me to become an adaptable team player who works well alone when needed. Balancing my studies, work and side projects has improved my ability to prioritize effectively, think strategically, and meet tight deadlines, all of which help me to succeed in dynamic and fast-paced environments like UBS.
+
+UBS’s global reach, its commitment to innovation, and collaborative culture are truly inspiring. I look forward to the possibility of joining the team, learning from experts working at UBS, and contributing to meaningful cloud projects. Thank you for considering my application.
+
+Sincerely,
+Tomas Ondrejka
