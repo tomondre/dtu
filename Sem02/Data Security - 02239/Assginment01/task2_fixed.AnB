@@ -20,4 +20,3 @@ A->B: {|M|}exp(exp(g,X),Y)
 Goals:
 B authenticates A on M
 M secret between A,B
-
