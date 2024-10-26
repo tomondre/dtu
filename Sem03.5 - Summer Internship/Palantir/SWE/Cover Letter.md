@@ -1,0 +1,21 @@
+Dear Hiring Manager,
+
+I am excited to apply for the Software Engineer Internship at Palantir Technologies. My technical background, hands-on experience and enthusiasm for solving real world problems align well with Palantir mission and values. In this cover letter, I will explain how my experience maps to Palantir's principles by providing real world examples.
+
+[//]: # (Impact: During my internship at Cisco, I worked on a project that had a great impact on the operational workflow. I analyzed, designed, implemented and documented a platform for managing OAuth clients, which reduced the time spend on OAuth client management to zero, and accelerated the proccess for Slido users by 50x. The project signifiantly improved the proccess and streamlined the expereince, demonstrating my ability to deliver solutions that make a difference.)
+
+Ownership: During my internship at Cisco, I worked on a project that had a great impact on the operational workflow. I analyzed, designed, implemented and documented a platform for managing OAuth clients, which reduced the time spend on OAuth client management to zero, and accelerated the proccess for Slido users by 50x. I took the lead on the entire lifecycle - from understanding the problem, creating proposals, and designing the solution. Throughout the project, I maintained a single source of truth through a project specification document, that was accessible to both technical and non-technical stakeholders. This was done to ensure clarity and alignment of requirements and expectations. The ownership also extended into testing and releasing the solution finally into production. The project was successfully delivered and met the expectations of the stakeholders.
+
+Collaboration: During my time at a public institution, the Danish Business Authority (DBA), I led a collaborative project between DBA and my university, acting as a bridge between a team of four students and a technical team at DBA. The problem that we were solving was related to the inability to aggregate logs from custom Kubernetes clusters. This project required continuous communication with the DBA team, organizing feedback sessions, reviews, and in-person meetings in Copenhagen, with the goal of ensuring that we meet their expectations. Even though the project was technical in nature, I facilitated discussions that made the project understandable to everyone involved.
+
+Trust: Laissez-Faire Leadership type of work in my current position, values are freedom and responsibility, 
+
+[//]: # (Talk about Go and DBA)
+Currently, I am pursuing a Masters Degree at the Technical University of Denmark in Copenhagen and have completed my bachelor's degree in Software Technology and Engineering at VIA University College. Throughout my bachelor studies, I had the opportunity to improve my skills in Java, Spring Boot and JPA, as these technologies have been used on projects from day until the final stages. Also, the teaching style at both mentioned institutions supports collaboration and independent learning, which has helped me to become an adaptable team player who works well alone when needed. Balancing my studies, work and side projects has improved my ability to prioritize effectively, think strategically, and meet tight deadlines, all of which help me to succeed in dynamic and fast-paced environments like UBS.
+
+Outside of work and school, I have been deeply involved in my own growth through personal projects, certifications, and attending industry events. I have successfully obtained certifications in AWS Machine Learning Specialization, three AWS Associate-level certifications, Kubernetes (KCNA), and Terraform. I have also attended KubeCon 2024 in Paris and regularly participate in Cloud meetups in Denmark, with the sole goal: to grow. All of these experiences allow me to stay ahead of industry trends and expand my technical expertise.
+
+Overall, I am confident that my skills and expertise align with Palantir's principles. I am excited about the opportunity to work on high-stakes, real-world problems that Palantir is known for, and I look forward to contributing my technical expertise, collaborative spirit and my passion for growth to your team. Thank you for considering my application, and I am eager to further discuss how I can contribute to Palantir's mission.
+
+Sincerely,
+Tomas Ondrejka
