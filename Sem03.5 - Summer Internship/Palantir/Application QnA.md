@@ -1,9 +1,20 @@
-What’s most exciting to you about Palantir’s offerings and why do you want to work here?
+1. What’s most exciting to you about Palantir’s offerings, and why do you want to work here?
 
-If you could solve any problem that impacts your daily life, what would it be and how would you solve it?
+I’m excited by Palantir’s mission and the ability to create solutions that have impact across many industries. Gaining insights from data is critical, as many times it reveals patterns that can allow for business improvements, for example in processes. An acquaintance of mine currently works at Palantir, and he expressed his opinions on the company’s engineering culture, which has a strong emphasis on collaboration, high-quality software development, and delivering clever solutions to its customers.
+Additionally, I've had the chance to explore Palantir's offerings more closely on my own, and I was impressed by the level of engineering that goes into each product.  I am excited to contribute to a company that bridges technology and impact. Working for a company that solves real-world problems is very purposeful.
 
-Tell us one thing that’s not on your resume that you’re proud of.
-Kubernetes Raspberry Cluster
+2. If you could solve any problem that impacts your daily life, what would it be and how would you solve it?
 
-At Palantir we have two main Software Engineering roles: Forward Deployed Software Engineer and Software Engineer. Which of these roles resonates the most with your job search and why? More details found here: https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87
-FDSE: Travelling, talkt to clients, solve real-world problems
+One of my major everyday concerns as a busy student, juggling school, work, healthy sleep, sports and social life is successfully managing my time. A large amount of my day is taken up by the time it takes to prepare meals, cook them, eat them, and then clean up afterward.
+To address this, I’ve thought of a solution: a subscription-based service that customizes healthy meals for users based on nutrition tests. Users could select meals for different times of the day: breakfast, lunch, and dinner, and the service would deliver pre-prepared meals in reusable containers to minimize cleanup time. This would solve almost all of my time management issues related to meal management, allowing me to focus on other aspects of my life.
+Although I am a big thinker, I am also a realist. The solution has several challenges. For example, the operating expenses of daily delivery may be high. This could be solved by delivering meals in batches over a few days to ensure less travel while keeping freshness. Additionally, outsourcing meal preparation to external kitchens would be necessary to scale the solution, which could present challenges in maintaining common standards. Lastly, maintaining meal diversity while meeting nutritional needs could be difficult, but it may be possible with the right partnerships and processes.
+
+3. Tell us one thing that’s not on your resume that you’re proud of.
+
+One project that I am especially proud of is the Kubernetes Raspberry Pi Cluster I built. It was a highly technical project where I replicated a small-scale production environment, including all the components necessary for a Kubernetes cluster. This project took a significant amount of time and effort, but it allowed me to deepen my understanding of key concepts in distributed systems and cloud infrastructure.
+What makes this project especially rewarding is the impact it had. I shared my experience and codebase on GitHub, and several people reached out. They have been mostly asking questions on how they can build similar project themselves. It was nice to see how my personal project created interest and motivated others to learn more about these technologies. You can view the project here: https://github.com/tomondre/raspberry-kubernetes-cluster.
+
+4. At Palantir, we have two main Software Engineering roles: Forward Deployed Software Engineer and Software Engineer. Which of these roles resonates the most with your job search and why?
+
+The Forward Deployed Software Engineer (FDSE) role resonates with me because it combines both technical expertise and direct connection with real-world problems. I love travelling, having explored Asia last year, and I enjoy working with people and connecting with them on a personal level. The position would allow me to drive change while still having connection to software engineering.
+I am also open to the Software Engineer role, as I am passionate about building high-quality software and solving complex problems. I have a strong technical background and experience in software development, that would allow me to contribute effectively to the team.     
