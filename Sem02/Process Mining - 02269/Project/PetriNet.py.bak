@@ -1,0 +1,104 @@
+from pm4py.objects.petri import petrinet as pn
+from pm4py.objects.petri import utils as petri_utils
+from pm4py.visualization.petrinet import visualizer as pn_vis
+
+# Create a Petri net
+net = pn.PetriNet("Angular Release Process")
+
+# Add places
+start = pn.PetriNet.Place("start")
+p_feat = pn.PetriNet.Place("feat_place")
+p_fix = pn.PetriNet.Place("fix_place")
+p_refactor = pn.PetriNet.Place("refactor_place")
+p_test = pn.PetriNet.Place("test_place")
+p_docs = pn.PetriNet.Place("docs_place")
+p_build = pn.PetriNet.Place("build_place")
+p_ci = pn.PetriNet.Place("ci_place")
+p_perf = pn.PetriNet.Place("perf_place")
+p_release = pn.PetriNet.Place("release_place")
+end = pn.PetriNet.Place("end")
+
+# Add places to the net
+net.places.update({
+    start, p_feat, p_fix, p_refactor, p_test, p_docs,
+    p_build, p_ci, p_perf, p_release, end
+})
+
+# Add transitions
+t_start = pn.PetriNet.Transition("t_start", "Start")
+t_feat = pn.PetriNet.Transition("t_feat", "feat")
+t_fix = pn.PetriNet.Transition("t_fix", "fix")
+t_refactor = pn.PetriNet.Transition("t_refactor", "refactor")
+t_test = pn.PetriNet.Transition("t_test", "test")
+t_docs = pn.PetriNet.Transition("t_docs", "docs")
+t_build = pn.PetriNet.Transition("t_build", "build")
+t_ci = pn.PetriNet.Transition("t_ci", "ci")
+t_perf = pn.PetriNet.Transition("t_perf", "perf")
+t_release = pn.PetriNet.Transition("t_release", "release")
+t_end = pn.PetriNet.Transition("t_end", "End")
+
+# Add transitions to the net
+net.transitions.update({
+    t_start, t_feat, t_fix, t_refactor,
+    t_test, t_docs, t_build, t_ci,
+    t_perf, t_release, t_end
+})
+
+# Add arcs
+# Start to feat, fix, refactor, build, ci, perf
+petri_utils.add_arc_from_to(start, t_feat, net)
+petri_utils.add_arc_from_to(start, t_fix, net)
+petri_utils.add_arc_from_to(start, t_refactor, net)
+petri_utils.add_arc_from_to(start, t_build, net)
+petri_utils.add_arc_from_to(start, t_ci, net)
+petri_utils.add_arc_from_to(start, t_perf, net)
+
+# feat leads to test and docs
+petri_utils.add_arc_from_to(t_feat, p_feat, net)
+petri_utils.add_arc_from_to(p_feat, t_test, net)
+petri_utils.add_arc_from_to(p_feat, t_docs, net)
+
+# fix leads to test and docs
+petri_utils.add_arc_from_to(t_fix, p_fix, net)
+petri_utils.add_arc_from_to(p_fix, t_test, net)
+petri_utils.add_arc_from_to(p_fix, t_docs, net)
+
+# refactor leads to docs
+petri_utils.add_arc_from_to(t_refactor, p_refactor, net)
+petri_utils.add_arc_from_to(p_refactor, t_docs, net)
+
+# test leads to docs
+petri_utils.add_arc_from_to(t_test, p_test, net)
+petri_utils.add_arc_from_to(p_test, t_docs, net)
+
+# docs leads to build and ci
+petri_utils.add_arc_from_to(t_docs, p_docs, net)
+petri_utils.add_arc_from_to(p_docs, t_build, net)
+petri_utils.add_arc_from_to(p_docs, t_ci, net)
+
+# build leads to perf and release
+petri_utils.add_arc_from_to(t_build, p_build, net)
+petri_utils.add_arc_from_to(p_build, t_perf, net)
+petri_utils.add_arc_from_to(p_build, t_release, net)
+
+# ci leads to release
+petri_utils.add_arc_from_to(t_ci, p_ci, net)
+petri_utils.add_arc_from_to(p_ci, t_release, net)
+
+# perf leads to release
+petri_utils.add_arc_from_to(t_perf, p_perf, net)
+petri_utils.add_arc_from_to(p_perf, t_release, net)
+
+# release leads to end
+petri_utils.add_arc_from_to(t_release, p_release, net)
+petri_utils.add_arc_from_to(p_release, t_end, net)
+petri_utils.add_arc_from_to(t_end, end, net)
+
+# Optionally, connect perf and refactor to allow for looping or multiple activities
+# For simplicity, this example keeps it linear
+
+# Visualize the Petri net
+gviz = pn_vis.apply(net, parameters={
+    pn_vis.Variants.FREQUENCY.value.Parameters.FORMAT: "png"
+})
+pn_vis.view(gviz)
