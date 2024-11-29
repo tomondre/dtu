@@ -1,36 +1,33 @@
 from z3 import *
 
+# Create a solver instance
 solver = Solver()
 
-s0_0 = Bool('s0_0')
-s1_1 = Bool('s1_1')
-s2_2 = Bool('s2_2')
-s3_2 = Bool('s3_2')
-s3_3 = Bool('s3_3')
+# Number of steps (k = 2)
+k = 2
 
-solver.add(s0_0 == True)
+# Declare Boolean variables for each time step
+s = [Bool('s{}'.format(i)) for i in range(k + 1)]  # s[0], s[1], s[2]
 
-solver.add(Implies(s0_0, s1_1))
-solver.add(Implies(s1_1, Or(s2_2, s3_2)))
-solver.add(Implies(s2_2, s0_0))
-solver.add(Implies(s3_2, s3_3))
+# Initial state constraint: s[0] = True (a holds at initial state)
+solver.add(s[0])
 
-# Violation
-solver.add(Or(Not(s0_0), Not(s1_1), Not(s2_2), Not(s3_3)))
+# Transition constraints
+for i in range(k):
+    # Transition constraint: s[i] or Not(s[i+1])
+    # This ensures that if s[i] is False, then s[i+1] is also False
+    # If s[i] is True, s[i+1] can be either True or False
+    solver.add(Or(s[i], Not(s[i+1])))
 
+# Property violation constraint: a does not hold at s[1] or s[2]
+solver.add(Or(Not(s[1]), Not(s[2])))
+
+# Check for satisfiability
 if solver.check() == sat:
-    print("SAT!")
     model = solver.model()
-
-    if model[s0_0] == True:
-        print("s0")
-    if model[s1_1] == True:
-        print("s1")
-    if model[s2_2] == True:
-        print("s2")
-    if model[s3_2] == True:
-        print("s3")
-    if model[s3_3] == True:
-        print("s3 (self-loop)")
+    # Extract the counterexample
+    for i in range(k + 1):
+        state_value = model.evaluate(s[i])
+        print(f's[{i}] = {state_value}')
 else:
-    print("UNSAT!")
+    print('The property AG a holds in the system up to the given k.')

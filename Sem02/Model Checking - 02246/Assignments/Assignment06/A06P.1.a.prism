@@ -1,0 +1,56 @@
+dtmc
+
+module client1
+  state1 : [0..1] init 0; // 0: inactive, 1: active
+  task1  : [0..5] init 0; // Task length
+
+  // Non-deterministically create a job when inactive
+  [] state1=0 ->
+     0.2 : (state1'=1) & (task1'=1) +
+     0.2 : (state1'=1) & (task1'=2) +
+     0.2 : (state1'=1) & (task1'=3) +
+     0.2 : (state1'=1) & (task1'=4) +
+     0.2 : (state1'=1) & (task1'=5);
+
+  // Serve the job if selected
+  [serve1] state1=1 & task1>0 -> (task1'=task1-1);
+
+  // Finish the job when task length reaches zero
+  [finish1] state1=1 & task1=0 -> (state1'=0);
+endmodule
+
+module client2 = client1 [state1=state2, task1=task2, serve1=serve2, finish1=finish2] endmodule
+module client3 = client1 [state1=state3, task1=task3, serve1=serve3, finish1=finish3] endmodule
+
+formula num_active = (state1=1?1:0) + (state2=1?1:0) + (state3=1?1:0);
+
+module scheduler
+  selected : [0..3] init 0; // 0: no client selected, 1-3: client IDs
+  quantum  : [0..2] init 0; // Remaining quantum
+
+  // Randomly select an active client based on tickets when no client is selected
+  [] selected=0 & num_active>0 ->
+    (state1=1 ? 1/num_active : 0) : (selected'=1) & (quantum'=2) +
+    (state2=1 ? 1/num_active : 0) : (selected'=2) & (quantum'=2) +
+    (state3=1 ? 1/num_active : 0) : (selected'=3) & (quantum'=2);
+
+  // If no clients are active, do nothing
+  [] selected=0 & num_active=0 -> true;
+
+  // Serve the selected client and decrement quantum
+  [serve1] selected=1 & quantum>0 -> (quantum'=quantum-1);
+  [serve2] selected=2 & quantum>0 -> (quantum'=quantum-1);
+  [serve3] selected=3 & quantum>0 -> (quantum'=quantum-1);
+
+  // Pre-empt the client when quantum expires
+  [] quantum=0 & selected!=0 -> (selected'=0);
+
+  // Synchronize on the finish actions to reset selected
+  [finish1] selected=1 -> (selected'=0);
+  [finish2] selected=2 -> (selected'=0);
+  [finish3] selected=3 -> (selected'=0);
+endmodule
+
+system
+  scheduler || client1 || client2 || client3
+endsystem

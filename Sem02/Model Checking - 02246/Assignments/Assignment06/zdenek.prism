@@ -1,0 +1,93 @@
+dtmc
+
+const int t; // Time bound for the property
+
+module client1
+  state1 : [0..1] init 0;
+  task1  : [0..5] init 0;
+
+  // Create the job
+  [create1] state1=0 ->
+    0.2 : (state1'=1) & (task1'=1) +
+    0.2 : (state1'=1) & (task1'=2) +
+    0.2 : (state1'=1) & (task1'=3) +
+    0.2 : (state1'=1) & (task1'=4) +
+    0.2 : (state1'=1) & (task1'=5);
+
+  // Serve the job
+  [serve1] state1=1 & task1>0 -> (task1'=task1-1);
+
+  // Complete the job
+  [finish1] state1=1 & task1=0 -> (state1'=0);
+endmodule
+
+module client2 = client1 [state1=state2, task1=task2, create1=create2, serve1=serve2, finish1=finish2, quantum1=quantum2] endmodule
+
+module client3 = client1 [state1=state3, task1=task3, create1=create3, serve1=serve3, finish1=finish3, quantum1=quantum3] endmodule
+
+module scheduler
+  selected : [0..3] init 0; // 0: no client selected
+  quantum  : [0..1] init 0; // Remaining quantum time units
+
+  // When no client is selected and all clients are active
+  [] selected=0 & state1=1 & state2=1 & state3=1 ->
+    (1/3) : (selected'=1) & (quantum'=1) +
+    (1/3) : (selected'=2) & (quantum'=1) +
+    (1/3) : (selected'=3) & (quantum'=1);
+
+  // When no client is selected and clients 1 and 2 are active
+  [] selected=0 & state1=1 & state2=1 & state3=0 ->
+    (1/2) : (selected'=1) & (quantum'=1) +
+    (1/2) : (selected'=2) & (quantum'=1);
+
+  // When no client is selected and clients 1 and 3 are active
+  [] selected=0 & state1=1 & state2=0 & state3=1 ->
+    (1/2) : (selected'=1) & (quantum'=1) +
+    (1/2) : (selected'=3) & (quantum'=1);
+
+  // When no client is selected and clients 2 and 3 are active
+  [] selected=0 & state1=0 & state2=1 & state3=1 ->
+    (1/2) : (selected'=2) & (quantum'=1) +
+    (1/2) : (selected'=3) & (quantum'=1);
+
+  // When no client is selected and only client1 is active
+  [] selected=0 & state1=1 & state2=0 & state3=0 ->
+    (selected'=1) & (quantum'=1);
+
+  // When no client is selected and only client2 is active
+  [] selected=0 & state1=0 & state2=1 & state3=0 ->
+    (selected'=2) & (quantum'=1);
+
+  // When no client is selected and only client3 is active
+  [] selected=0 & state1=0 & state2=0 & state3=1 ->
+    (selected'=3) & (quantum'=1);
+
+  // When no client is selected and no clients are active
+  [] selected=0 & state1=0 & state2=0 & state3=0 ->
+    (selected'=0) & (quantum'=0);
+
+  // Serve the selected client and decrement quantum
+  [serve1] selected=1 & quantum>0 -> (quantum'=quantum-1);
+  [serve2] selected=2 & quantum>0 -> (quantum'=quantum-1);
+  [serve3] selected=3 & quantum>0 -> (quantum'=quantum-1);
+
+  // When quantum expires, reset selected
+  [] quantum=0 & selected!=0 -> (selected'=0);
+
+  // When the client finishes, reset selected and quantum
+  [finish1] selected=1 -> (selected'=0) & (quantum'=0);
+  [finish2] selected=2 -> (selected'=0) & (quantum'=0);
+  [finish3] selected=3 -> (selected'=0) & (quantum'=0);
+endmodule
+
+module Monitor
+  finished : bool init false;
+
+  // Synchronize on the finish1 action from client1
+  [finish1] !finished -> (finished'=true);
+  [finish1] finished -> true; // Remain in the same state after first completion
+endmodule
+
+// system
+//     scheduler || client1 || client2 || client3 || Monitor
+// endsystem
