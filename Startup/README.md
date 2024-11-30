@@ -90,3 +90,14 @@
 - **Value Proposition:**
   - Encourages reusability and standardization in a currently fragmented space.
   - Reduces development time and complexity for AI/cloud developers.
+
+### 3.7 Leveraging DTU Research for Product Development
+- **Objective:** Collaborate with researchers at DTU to build a product based on cutting-edge academic work.
+- **Features:**
+  - Explore DTU’s extensive library of research papers for potential ideas.
+  - Connect with researchers to understand and apply their work in a commercial context.
+  - Leverage DTU’s research facilities and academic network for prototyping and testing.
+- **Value Proposition:**
+  - Utilizes state-of-the-art academic research to create innovative products.
+  - Strengthens credibility by collaborating with experts and institutions.
+  - Bridges the gap between academia and industry by turning research into practical solutions.
