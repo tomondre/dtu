@@ -81,7 +81,7 @@
   - Provides a flexible and modular approach to connecting LLM capabilities with practical, actionable outputs.
   - Enables developers to easily extend AI actions without deep knowledge of underlying model architectures.
 
-### 3.6 Platform Inspired by Package Management Patterns
+### 3.6 More open ended: Platform Inspired by Package Management Patterns
 - **Objective:** Create a platform that brings the concept of package management (similar to npm, PyPI, or Docker) to a new domain, potentially AI workflows or cloud automation.
 - **Features:**
   - Centralized repository for reusable "action packages" or workflows.
