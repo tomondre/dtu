@@ -101,3 +101,15 @@
   - Utilizes state-of-the-art academic research to create innovative products.
   - Strengthens credibility by collaborating with experts and institutions.
   - Bridges the gap between academia and industry by turning research into practical solutions.
+
+### 3.8 AI Optimization Tool for AWS/Cloud Accounts
+- **Objective:** Create an AI-driven tool to optimize AWS or other cloud accounts for cost, performance, and resource usage.
+- **Features:**
+  - Automatic analysis of resource usage patterns to suggest optimizations.
+  - Identification and termination of underutilized or idle resources.
+  - Cost-saving recommendations (e.g., switching to Reserved Instances or Spot Instances).
+  - Integration with cloud provider APIs for seamless execution of recommendations.
+- **Value Proposition:**
+  - Saves money by reducing unnecessary cloud spending.
+  - Enhances performance by ensuring resources are allocated efficiently.
+  - Helps companies manage increasingly complex cloud environments with minimal manual effort.
