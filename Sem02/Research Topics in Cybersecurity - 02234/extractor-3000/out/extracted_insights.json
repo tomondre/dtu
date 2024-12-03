@@ -1,0 +1,64 @@
+[
+    {
+        "paperName": "2402.18516v1",
+        "bibliographicReference": "@article{Cestari2024, title={Model Predictive Control with adaptive resilience for Denial-of-Service Attacks mitigation on a Regulated Dam}, author={Cestari, Raffaele G. and Longari, Stefano and Zanero, Stefano and Formentin, Simone}, journal={arXiv e-prints}, year={2024}, archivePrefix={arXiv}, eprint={2402.18516v1}, primaryClass={eess.SY}}",
+        "insights": [
+            {
+                "insight": "As far as we are aware, for the first time, we propose a model predictive control architecture capable of mitigating DoS attacks where the attacker overrides the optimal control action and replaces it with the optimal adversarial control action.",
+                "explanation": "The paper introduces a novel Model Predictive Control (MPC) architecture specifically designed to mitigate Denial-of-Service (DoS) attacks. Unlike previous approaches, this architecture accounts for scenarios where an attacker can override the controller's optimal actions with adversarial ones, ensuring system resilience even under such sophisticated attacks.",
+                "grouping": "Resilient Control Systems"
+            },
+            {
+                "insight": "We propose an online adapting solution capable of predicting the attack occurrence and correspondingly increasing the safety level, mitigating damages, and simultaneously, keeping a satisfactory performance tracking in periods of absence of attacks.",
+                "explanation": "The authors develop an adaptive resilience mechanism within the MPC framework that dynamically adjusts the system's response based on the predicted likelihood of attacks. This ensures that the system remains performant during normal operations while enhancing its safety measures when an attack is imminent, thereby balancing performance and security effectively.",
+                "grouping": "Adaptive Security Mechanisms"
+            },
+            {
+                "insight": "For the first time, as far as we are aware, we exploit Hawkes processes in the context of model predictive control to forecast cyber attack occurrence.",
+                "explanation": "The paper innovatively applies Hawkes processes, which are typically used for modeling the occurrence of random events over time, to predict cyber attack patterns within a Model Predictive Control framework. This integration allows the system to anticipate and prepare for potential attacks, enhancing the overall resilience of the control architecture.",
+                "grouping": "Predictive Modeling in Cybersecurity"
+            },
+            {
+                "insight": "We demonstrate the effectiveness of the resulting MPC strategy in 2 attack scenarios on a real system with actual data, the regulated Olginate dam of Lake Como.",
+                "explanation": "The proposed Adaptive Resilient MPC architecture is empirically validated using real-world data from the regulated Olginate dam of Lake Como. The study assesses the system's performance under two distinct attack scenarios, showcasing the practical applicability and robustness of the proposed solution in managing critical infrastructure under cyber threats.",
+                "grouping": "Empirical Validation and Case Studies"
+            },
+            {
+                "insight": "We show that adaptive resilience is mandatory for adaptation to changing attack conditions and that the proposed architecture, Adaptive Resilient MPC, outperforms the competitors in both the attack scenarios.",
+                "explanation": "Through comparative analysis, the paper highlights the necessity of adaptive resilience in control systems facing dynamic attack conditions. The Adaptive Resilient MPC architecture consistently outperforms traditional MPC and SafeMPC strategies across different types of DoS attack patterns, underscoring its superiority in maintaining both performance and security.",
+                "grouping": "Performance Evaluation and Benchmarking"
+            }
+        ]
+    },
+    {
+        "paperName": "Towards_Security_and_Privacy_of_SCADA_Systems_through_Decentralized_Architecture",
+        "bibliographicReference": "@inproceedings{GomezTosh2019,\n    author = {Abel O. Gomez Rivera and Deepak K. Tosh},\n    title = {Towards Security and Privacy of SCADA Systems through Decentralized Architecture},\n    booktitle = {2019 International Conference on Computational Science and Computational Intelligence (CSCI)},\n    pages = {1224--1229},\n    year = {2019},\n    organization = {IEEE},\n    doi = {10.1109/CSCI49370.2019.00230},\n}",
+        "insights": [
+            {
+                "insight": "The Modbus protocol does not consider cyber-security as significant concerns.",
+                "explanation": "The use of legacy communication protocols like Modbus in SCADA systems introduces vulnerabilities, as these protocols were not designed with cybersecurity in mind, making the systems susceptible to attacks such as data manipulation and denial of service.",
+                "grouping": "Legacy Protocol Vulnerabilities"
+            },
+            {
+                "insight": "Centralized architectures are vulnerable to a single point of failure attacks, i.e., an attacker can compromise the complete system by taking control of a single entity.",
+                "explanation": "The reliance on centralized architectures in SCADA systems means that compromising the central controller can lead to the complete system being vulnerable, highlighting the need for more resilient, decentralized approaches to enhance security.",
+                "grouping": "Centralized Architecture Risks"
+            },
+            {
+                "insight": "We also provide a high level decentralized SCADA system architecture that potentially alleviates the above-stated security issues by utilizing the benefit of tamper-resistant ledger.",
+                "explanation": "The paper introduces a decentralized SCADA architecture leveraging blockchain technology's tamper-resistant ledger to mitigate security issues inherent in centralized systems, promoting data integrity and resilience against attacks.",
+                "grouping": "Blockchain-based Decentralization"
+            },
+            {
+                "insight": "However, state-of-art IDSs cannot precisely differentiate if the anomaly is the result of an attack or a defective device.",
+                "explanation": "Current Intrusion Detection Systems in SCADA environments are limited in their ability to distinguish between genuine security breaches and anomalies caused by faulty devices, reducing their effectiveness in maintaining system security.",
+                "grouping": "Intrusion Detection Challenges"
+            },
+            {
+                "insight": "The identity management protocol will be deployed on the blockchain peers, and will provide three standard functions: (1) identity provisioning, (2) update, revocation, and (3) lookup of access privileges.",
+                "explanation": "Implementing identity management protocols within the blockchain-based SCADA architecture enhances security by managing device identities and access privileges, thereby preventing unauthorized access and privilege escalation attacks.",
+                "grouping": "Identity Management in Decentralized Systems"
+            }
+        ]
+    }
+]
