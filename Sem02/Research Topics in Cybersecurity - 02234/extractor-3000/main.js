@@ -215,9 +215,10 @@ async function main() {
 
         // Append to data
         data.push({
-            paperName: paperName,
+            paperName,
             bibliographicReference: insights.bibliographicReference,
-            insights: insights.insights || []
+            insights: insights.insights || [],
+            paperTitle: insights.paperName
         });
 
         processed += 1;
