@@ -2524,5 +2524,101 @@
             }
         ],
         "paperTitle": "Modeling Cyber-Physical Vulnerability of the Smart Grid With Incomplete Information"
+    },
+    {
+        "paperName": "A_Survey_of_IoT-Enabled_Cyberattacks_Assessing_Attack_Paths_to_Critical_Infrastructures_and_Services",
+        "bibliographicReference": "@article{Stellios2018IoTCyberattacks,\n  title={A Survey of IoT-Enabled Cyberattacks: Assessing Attack Paths to Critical Infrastructures and Services},\n  author={Stellios, Ioannis and Kotzanikolaou, Panayiotis and Psarakis, Mihalis and Alcaraz, Cristina and Lopez, Javier},\n  journal={IEEE Communications Surveys & Tutorials},\n  volume={20},\n  number={4},\n  pages={3453-3491},\n  year={2018},\n  publisher={IEEE}\n}",
+        "insights": [
+            {
+                "insight": "As the deployment of Internet of Things (IoT) is experiencing an exponential growth, it is no surprise that many recent cyber attacks are IoT-enabled: the attacker initially exploits some vulnerable IoT technology as a first step toward compromising a critical system that is connected, in some way, with the IoT.",
+                "explanation": "This highlights the foundational role IoT devices play in modern cyberattacks, serving as initial entry points for attackers to access and compromise critical infrastructures across various sectors. The rapid expansion of IoT increases the attack surface, making critical systems more vulnerable to IoT-based exploitation.",
+                "grouping": "IoT as Attack Enablers"
+            },
+            {
+                "insight": "In the case of attacks against “end-user” IoT devices, the potential consequences are usually underestimated. Intuitively this seems to be correct, since such attacks involve smart home appliances, personal devices, vehicles or body area networks which are not directly connected with CIs. However, as recent real-world incidents have shown, in many cases the actual target was not the IoT system itself, but some external, somehow connected and far more critical system or service.",
+                "explanation": "This underscores that even end-user IoT devices, typically considered low-risk due to their lack of direct connection to critical infrastructures, can be pivotal in more severe attacks. Such devices can be leveraged as stepping stones to more significant targets, thereby expanding the potential impact beyond what was initially assessed.",
+                "grouping": "Indirect and Subliminal Attack Paths"
+            },
+            {
+                "insight": "We define a risk-based methodology to assess the criticality of IoT-enabled cyber attacks, based on these risk factors, consistent with well established risk assessment standards such as ISO 27005 and NIST SP800-30.",
+                "explanation": "The research presents a structured, qualitative approach to gauging the severity of IoT-enabled cyberattacks by considering threat levels, vulnerabilities, and potential impacts. Aligning with international standards ensures the methodology is robust and applicable across various contexts.",
+                "grouping": "Risk Assessment Methodologies"
+            },
+            {
+                "insight": "Based on the analysis of the attacks presented above, it is shown that IoT enabling technologies are radically changing the threat landscape on any sector they are applied. Their inherent security weaknesses stem from their constrained computing capabilities and their poor security design.",
+                "explanation": "This emphasizes that IoT technologies significantly alter the cybersecurity landscape due to their inherent security limitations, such as limited resources and insufficient design for security. These weaknesses make IoT devices attractive targets, thereby increasing vulnerabilities across sectors where they are deployed.",
+                "grouping": "Impact of IoT Security Weaknesses"
+            },
+            {
+                "insight": "Although the available security controls are not always sufficient to mitigate some of the novel advanced threats, the majority of the attack vectors could be properly mitigated if the existing security mechanisms and standards were properly implemented.",
+                "explanation": "The study demonstrates that while new attack methods continue to emerge, many IoT-based attack vectors are still preventable through the correct application of existing security controls and adherence to established standards. This implies that enhancing compliance and implementation of current security practices is a critical step in reducing IoT-enabled cyber risks.",
+                "grouping": "Mitigation Strategies and Controls"
+            }
+        ],
+        "paperTitle": "A Survey of IoT-Enabled Cyberattacks: Assessing Attack Paths to Critical Infrastructures and Services"
+    },
+    {
+        "paperName": "A_Survey_on_Smart_Grid_Cyber-Physical_System_Testbeds",
+        "bibliographicReference": "@article{Cintuglu2017Survey, title={A Survey on Smart Grid Cyber-Physical System Testbeds}, author={Cintuglu, Mehmet Hazar and Mohammed, Osama A. and Akkaya, Kemal and Uluagac, A. Selcuk}, journal={IEEE Communications Surveys & Tutorials}, volume={19}, number={1}, pages={446-464}, year={2017}, publisher={IEEE}}",
+        "insights": [
+            {
+                "insight": "This work is the first to discuss the requirements of testbed features in-depth, and how they meet expected solutions.",
+                "explanation": "The paper distinguishes itself by being the first comprehensive survey focusing specifically on the requirements and features of smart grid cyber-physical system testbeds. It delves into how these testbed features align with expected solutions, providing valuable guidelines for future developments.",
+                "grouping": "Unique Contribution"
+            },
+            {
+                "insight": "We provided a four step taxonomy considering smart grid domains, research areas, application platforms and communication infrastructure.",
+                "explanation": "The authors present a systematic taxonomy that categorizes existing smart grid testbeds based on four key dimensions: smart grid domains, research goals, test platforms, and communication infrastructure. This taxonomy facilitates a structured understanding and comparison of different testbeds.",
+                "grouping": "Taxonomy Framework"
+            },
+            {
+                "insight": "We consider the following features as desirable: 1) Multiple research area support, 2) Heterogeneous communication backbone, 3) Security & privacy awareness, 4) Multiple communication protocol support, and 5) Remote connection access.",
+                "explanation": "The paper outlines a set of desirable features for evaluating and developing smart grid cyber-physical testbeds. These features serve as a metric for comparing existing testbeds and guiding the construction of new ones to ensure they meet comprehensive research and operational needs.",
+                "grouping": "Evaluation Criteria"
+            },
+            {
+                "insight": "We identified the following trends: Communication-dependent power grid, Security & privacy awareness, Software Defined Networks, Data Interoperability, Distributed control, and Interconnection of testbeds.",
+                "explanation": "The survey highlights emerging trends and open research issues in the field of smart grid testbeds. These trends include the increasing dependency on communication infrastructures, heightened focus on cybersecurity, adoption of software-defined networking, emphasis on data interoperability, shift towards distributed control mechanisms, and the interconnection of multiple testbeds to enhance collaborative research.",
+                "grouping": "Future Trends and Research Issues"
+            },
+            {
+                "insight": "Although numerous smart grid cyber-physical testbed studies were conducted, the majority of the performance evaluation are simulation based. The inherent complexities of the smart grid make it very difficult to model all details in simulation platforms.",
+                "explanation": "The authors note that while there are many studies on smart grid testbeds, most rely heavily on simulation-based evaluations. This is due to the complex nature of smart grids, which makes comprehensive real-world modeling challenging. However, the paper emphasizes the necessity of hardware-based testbeds for more realistic and transferable research outcomes.",
+                "grouping": "Simulation vs Hardware-based Testbeds"
+            }
+        ],
+        "paperTitle": "A Survey on Smart Grid Cyber-Physical System Testbeds"
+    },
+    {
+        "paperName": "Cybersecurity_for_Smart_Substation",
+        "bibliographicReference": "@inproceedings{Hokama2020CybersecuritySubstation,\n  title={Cybersecurity for Smart Substation},\n  author={Hokama, Wagner Seizo and de Souza, Juliane Soares},\n  booktitle={2020 IEEE PES Transmission & Distribution Conference and Exhibition - Latin America (T&D LA)},\n  year={2020},\n  organization={IEEE}\n}",
+        "insights": [
+            {
+                "insight": "With the advent of this digital technology, which bring us a huge framework of opportunities for improvement in its operation and maintenance, we also have a weakness to be considered and studied that is cybersecurity, as already occurs in the corporate network of companies.",
+                "explanation": "The integration of intelligent electronic devices (IEDs) into TCP/IP networks following the IEC 61850 standard enhances operational capabilities of smart substations but simultaneously introduces significant cybersecurity vulnerabilities similar to those found in corporate IT networks.",
+                "grouping": "Vulnerability Management"
+            },
+            {
+                "insight": "One product available in the market is Omicron StationGuard, that creates a complete model of the automation system and the substation and then compares every single network packet with this live system model.",
+                "explanation": "Omicron StationGuard leverages the Substation Configuration Language (SCL) defined by IEC 61850 to build a comprehensive model of the substation's automation system. It enhances cybersecurity by continuously monitoring and comparing network traffic against this model to detect anomalies and potential cyber-attacks without requiring a learning phase.",
+                "grouping": "Intrusion Detection Systems"
+            },
+            {
+                "insight": "Hardening devices mean that all unused ports, protocols or services in a device must be disabled.",
+                "explanation": "Implementing the hardening concept is essential for protecting smart substations from internal threats. By disabling unused ports, protocols, and services on devices such as switches and IEDs, the attack surface is significantly reduced, thereby mitigating the risk of unauthorized access and cyber-attacks.",
+                "grouping": "System Hardening"
+            },
+            {
+                "insight": "IEDs should be able to indicate cybersecurity related events. These events must be stored internally in the event list and can be sent to the HMI (Human Machine Interfaces) system through the IEC-61850 protocol.",
+                "explanation": "Establishing comprehensive event logging within IEDs is crucial for effective incident response. By capturing and transmitting cybersecurity-related events to the Human Machine Interface (HMI) system via the IEC-61850 protocol, operators can monitor, analyze, and respond to security incidents promptly, thereby enhancing the overall security posture of the substation.",
+                "grouping": "Incident Response"
+            },
+            {
+                "insight": "Cybersecurity must be treated as a process, not a project, to be effective in its smooth operation and sustainability over time. The responsibility for cybersecurity should lie with everyone involved in the process, not just the company's IT / TO area.",
+                "explanation": "Effective cybersecurity in smart substations requires an ongoing, integrated approach that involves all stakeholders. Adopting standards like IEC-62443 and fostering a culture of security ensures that cybersecurity measures are continuously maintained and improved, rather than being treated as a one-time project managed solely by the IT or operational technology (OT) departments.",
+                "grouping": "Cybersecurity Governance"
+            }
+        ],
+        "paperTitle": "Cybersecurity for Smart Substation"
     }
 ]

@@ -4,3 +4,10 @@
 .idea/
 ./AnB examples/*
 .obsidian/
+*.sml
+&.rsl.el
+
+*.d.ts
+*.js.map
+node_modules/*
+/Sem02/Research Topics in Cybersecurity - 02234/extractor-3000/node_modules/
