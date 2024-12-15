@@ -1,0 +1,17 @@
+(A,1) -> i: {A,i,NA(1),KAB(1)}_(pk(i))
+i -> (B,1): {A,B,NA(1),KAB}_(pk(B))
+(B,1) -> i: {|A,B,NA(1)|}_KAB
+i -> (A,1): {|A,i,NA(1)|}_KAB(1)
+(A,1) -> i: {|A,NA(1)|}_(sk(A,s))
+i -> (s,1): {|A,NA(1)|}_(sk(A,s))
+(s,1) -> i: {A,NA(1),s}_inv(pk(s))
+i -> (B,1): {A,NA(1),s}_inv(pk(s))
+(B,1) -> i: {|A,B,NA(1),Payload(5)|}_KAB
+
+
+(A,1) -> i: {|A,NA(1),KAB(1),pk(i)|}_(sk(A,s))
+i -> (s,1): {|A,NA(1),KAB(1),pk(i)|}_(sk(A,s))
+(s,1) -> i: {{A,NA(1),s,KAB(1)}_inv(pk(s))}_(pk(i))
+i -> (B,1): {{A,NA(1),s,KAB(1)}_inv(pk(s))}_(pk(B))
+(B,1) -> i: {|A,B,NA(1),Payload(3)|}_KAB(1)
+

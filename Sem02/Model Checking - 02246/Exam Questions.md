@@ -1,0 +1,2 @@
+* Bisimulation vs trace equivalnce
+* 

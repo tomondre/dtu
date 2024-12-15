@@ -1,0 +1,4 @@
+A -> i: A,B,exp(g,X),{|A,B,exp(g,X)|}_(ck(A,i))
+i -> A: g,{|B,A,exp(g,X),g|}_(sk(A,i))
+A -> i: {|M|}_(exp(g,X))
+i can produce secret M

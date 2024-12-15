@@ -1,0 +1,117 @@
+Design
+
+scheme DesignTest =
+extend Design with 
+class
+  value
+	p1 : Person = "David",
+	p2 : Person = "Kien",
+	p3 : Person = "Andrej",
+	p4 : Person = "Max",
+	p5 : Person = "Tomas",
+	p6 : Person = "Anne",
+	p7 : Person = "Lotte",
+	p8 : Person = "Torsten",
+	p9 : Person = "Camilla",
+	p10 : Person = "Jacob",
+	p11 : Person = "Pernille",
+
+	f1 : Family = {p1},
+	f2 : Family = {p2, p3},
+	f3 : Family = {p4, p5, p6},
+	f4 : Family = {p7, p8, p9, p10, p11},
+	fEmpty : Family = {},
+	f3Rep: Family = {p4, p5, p6},
+
+	families : Families = {f1, f2, f3, f4},
+	singleFamily : Families = {f4},
+	incompleteFamilyGroup  : Families = {f1, f2, f3, f4, fEmpty},
+	emptyFamilies : Families = {},
+	duplicateMembersFamily : Families = {f3, f3Rep},
+
+	tbl1 : Table = {p8, p4},
+	tbl2 : Table = {p2, p9, p6},
+	tbl3 : Table = {p10, p5},
+	tbl4 : Table = {p3, p11, p1},
+	tbl5 : Table = {p7},
+	tableWithDuplicate : Table = {p1},
+	tableWithSameFamily : Table = {p2, p3},
+	validTable : Table = {p1, p2, p4, p7},
+	singlePersonTable : Table = {p1},
+	emptyTable : Table = {},
+
+	planSet : Plan = {tbl1, tbl2, tbl3, tbl4, tbl5},
+	planIncomplete : Plan = {tbl1, tbl2, tbl3, tbl4},
+	planWithDuplicate : Plan = {tbl1, tbl2, tbl3, tbl4},
+	planWithSameFamily : Plan = {tableWithSameFamily},
+	planWithEmptyTable : Plan = {tbl1, tbl2, tbl3, tbl4, tbl5, emptyTable}
+
+  test_case
+    /* areRelatives(Person >< Person >< Families) -> Bool */
+    /* Test to check if two persons are from the same family */
+    [testRelatives01] areRelatives(p2, p3, families) = true,
+    [testRelatives02] areRelatives(p1, p5, families) = false,
+
+    /* isWellformed(Families) -> Bool */
+    /* Test if a families structure is well-formed (no empty families, no duplicates) */
+    [testWellFormed01] isWellformed(families) = true,
+    [testWellFormed02] isWellformed(incompleteFamilyGroup) = false,
+
+    /* reqNoEmptyFamilies(Families) -> Bool */
+    /* Test if there are no empty families */
+    [testNoEmptyFamilies01] reqNoEmptyFamilies(families) = true,
+    [testNoEmptyFamilies02] reqNoEmptyFamilies(incompleteFamilyGroup) = false,
+
+    /* reqNoDuplicateFamilyMembers(Families) -> Bool */
+    /* Test if there are no duplicate members across families */
+    [testNoDuplicates01] reqNoDuplicateFamilyMembers(families) = true,
+    [testNoDuplicates02] reqNoDuplicateFamilyMembers(duplicateMembersFamily) = false,
+
+    /* isCorrectPlan(Plan >< Families) -> Bool */
+    /* Test if a plan is correct (all family members are seated correctly) */
+    [testCorrectPlan01] isCorrectPlan(planSet, families) = true,
+    [testCorrectPlan02] isCorrectPlan(planWithSameFamily, families) = false,
+    [testCorrectPlan03] isCorrectPlan(planWithDuplicate, families) = false,
+
+    /* reqNoFamilyMembersSeatedTogether(Plan >< Families) -> Bool */
+    /* Test if no family members are seated together at the same table */
+    [testNoSeatingTogether01] reqNoFamilyMembersSeatedTogether(planSet, families) = true,
+    [testNoSeatingTogether02] reqNoFamilyMembersSeatedTogether(planWithSameFamily, families) = false,
+
+    /* reqEachFamilyMemberSeatedOnce(Plan >< Families) -> Bool */
+    /* Test if each family member is seated exactly once */
+    [testSeatedOnce01] reqEachFamilyMemberSeatedOnce(planSet, families) = true,
+    [testSeatedOnce02] reqEachFamilyMemberSeatedOnce(planIncomplete, families) = false,
+
+    /* reqNoEmptyTables(Plan) -> Bool */
+    /* Test if there are no empty tables */
+    [testNoEmptyTables01] reqNoEmptyTables(planSet) = true,
+    [testNoEmptyTables02] reqNoEmptyTables(planWithEmptyTable) = false,
+
+    /* reqAllFamilyMembersAreSeated(Plan >< Families) -> Bool */
+    /* Test if all family members are seated */
+    [testAllSeated01] reqAllFamilyMembersAreSeated(planSet, families) = true,
+    [testAllSeated02] reqAllFamilyMembersAreSeated(planIncomplete, families) = false,
+
+    /* allEmpty(Families) -> Bool */
+    /* Test to check if all families are empty */
+    [testAllEmpty01] allEmpty(emptyFamilies) = true,
+    [testAllEmpty02] allEmpty(families) = false,
+    [testAllEmpty03] allEmpty(incompleteFamilyGroup) = false,
+
+    /* combine(Table >< Plan) -> Plan */
+    /* Test combining a table with an existing plan */
+    [testCombine01] combine(tbl1, planSet) = {tbl1, tbl2, tbl3, tbl4, tbl5},
+    [testCombine02] combine(emptyTable, planSet) = planSet,
+    [testCombine03] combine(tbl1, {}) = {tbl1},
+
+    /* interleave(Families) -> Plan */
+    /* Test interleaving with a non-empty set of families */
+    [testInterleave01] interleave(families) =  {{p11, p6, p3, p1}, {p7, p4, p2}, {p10, p5}, {p8}, {p9}},
+    /* Test interleaving with a single family */
+    [testInterleave02] interleave(singleFamily) = {{p7}, {p8}, {p9}, {p10}, {p11}},
+    /* Test interleaving with an empty set of families */
+    [testInterleave03] interleave(emptyFamilies) = {},
+    /* Test interleaving with families where one family is empty */
+    [testInterleave04] interleave(incompleteFamilyGroup) = {{p11, p6, p3, p1}, {p7, p4, p2}, {p10, p5}, {p8}, {p9}}
+end
