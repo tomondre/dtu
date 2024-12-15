@@ -1,0 +1,59 @@
+scheme Basics =
+    class
+      type
+        Person = Text,
+        Family = Person-set,
+        Families = Family-set,
+        Table = Person-set,
+        Plan = Table-set
+  
+      value
+        -- Two people are relatives: part of the same family
+        areRelatives: Person >< Person >< Families -> Bool
+        areRelatives(p1, p2, fs) is
+          (exists f: Family :- f isin fs /\ p1 isin f /\ p2 isin f),
+  
+        -- Input families are well-formed
+        isWellformed: Families -> Bool
+        isWellformed(fs) is
+          (reqNoEmptyFamilies(fs) /\ reqNoDuplicateFamilyMembers(fs)),
+  
+        reqNoEmptyFamilies: Families -> Bool
+        reqNoEmptyFamilies(fs) is
+          (all f: Family :- f isin fs => f ~= {}),
+  
+        reqNoDuplicateFamilyMembers: Families -> Bool
+        reqNoDuplicateFamilyMembers(fs) is
+          (all f1: Family :- f1 isin fs =>
+            (all f2: Family :- f2 isin fs /\ f1 ~= f2 => f1 inter f2 = {})),
+  
+        -- Plan is valid: no family members seated together at the same table
+        isCorrectPlan: Plan >< Families -> Bool
+        isCorrectPlan(p, fs) is
+          (reqNoFamilyMembersSeatedTogether(p, fs) /\
+           reqEachFamilyMemberSeatedOnce(p, fs) /\
+           reqNoEmptyTables(p) /\
+           reqAllFamilyMembersAreSeated(p, fs)),
+  
+        reqNoFamilyMembersSeatedTogether: Plan >< Families -> Bool
+        reqNoFamilyMembersSeatedTogether(p, fs) is
+          (all t: Table :- t isin p =>
+            (all p1: Person :- p1 isin t =>
+              (all p2: Person :- p2 isin t /\ p1 ~= p2 => ~areRelatives(p1, p2, fs)))),
+  
+        reqEachFamilyMemberSeatedOnce: Plan >< Families -> Bool
+        reqEachFamilyMemberSeatedOnce(p, fs) is
+            (all f: Family :- f isin fs =>
+                (all person: Person :- person isin f =>
+                    (exists! t: Table :- t isin p /\ person isin t))),
+  
+        reqNoEmptyTables: Plan -> Bool
+        reqNoEmptyTables(p) is
+          (all t: Table :- t isin p => t ~= {}),
+
+        reqAllFamilyMembersAreSeated: Plan >< Families -> Bool
+        reqAllFamilyMembersAreSeated(p, fs) is
+            (all f: Family :- f isin fs =>
+                (all person: Person :- person isin f =>
+                    (exists t: Table :- t isin p /\ person isin t)))
+    end

@@ -1,0 +1,127 @@
+Design
+
+scheme DesignTest =
+extend Design with 
+class
+  value
+	/* Person values */
+	p1 : Person = "David",
+	p2 : Person = "Kien",
+	p3 : Person = "Andrej",
+	p4 : Person = "Max",
+	p5 : Person = "Tomas",
+	p6 : Person = "Anne",
+	p7 : Person = "Lotte",
+	p8 : Person = "Torsten",
+	p9 : Person = "Camilla",
+	p10 : Person = "Jacob",
+	p11 : Person = "Pernille",
+
+	/* Family values */
+	f1 : Family = {p1},
+	f2 : Family = {p2, p3},
+	f3 : Family = {p4, p5, p6},
+	f4 : Family = {p7, p8, p9, p10, p11},
+	fEmpty : Family = {},
+	f2Rep: Family = {p2, p3},
+
+	/* Families values */
+	families : Families = {f1, f2, f3, f4},
+	famSingleFamily : Families = {f4},
+	famBadTable : Families = {f2},
+	famBadEmptyF : Families = {f1, f2, f3, f4, fEmpty},
+	famBadEmpty: Families = {},
+	famBadPerRep: Families = {f2, f2Rep},
+
+	/* Table values */
+	t1 : Table = {p8, p4},
+	t2 : Table = {p2, p9, p6},
+	t3 : Table = {p10, p5},
+	t4 : Table = {p3, p11, p1},
+	t5 : Table = {p7},
+	tBadRep : Table = {p1},
+	tBadSameF : Table = {p2, p3},
+	tGood : Table = {p1, p2, p4, p7},
+	tGoodOneP : Table = {p1},
+	tBadEmpty : Table = {},
+
+	/* Plan values */
+	plan : Plan = {t1, t2, t3, t4, t5},
+	planBadNotAllPer : Plan = {t1, t2, t3, t4},
+	planBadPerRep : Plan = {t1, t2, t3, t4, t5, tBadRep},
+	planBadSameF : Plan = {tBadSameF},
+	planBadEmptyTable : Plan = {t1, t2, t3, t4, t5, tBadEmpty}
+	
+  test_case
+    /** areRelatives **/
+    /* Test to check if two persons are from the same family */
+    [t101] areRelatives(p2, p3, families) = true,
+    [t102] areRelatives(p1, p5, families) = false,
+
+    /** isWellFormed **/
+    /* Test if a families structure is well-formed (no empty families, no duplicates) */
+    [t201] isWellformed(families) = true,
+    [t202] isWellformed(famBadEmptyF) = false,
+
+    /** reqNoEmptyFamilies **/
+    /* Test if there are no empty families */
+    [t301] reqNoEmptyFamilies(families) = true,
+    [t302] reqNoEmptyFamilies(famBadEmptyF) = false,
+
+    /** reqNoDuplicateFamilyMembers **/
+    /* Test if there are no duplicate members across families */
+    [t401] reqNoDuplicateFamilyMembers(families) = true,
+    [t402] reqNoDuplicateFamilyMembers(famBadPerRep) = false,
+
+    /** isCorrectPlan **/
+    /* Test if a plan is correct (all conditions fulfilled) */
+    [t501] isCorrectPlan(plan, families) = true,
+    [t502] isCorrectPlan(planBadSameF, families) = false,
+
+    /** reqNoFamilyMembersSeatedTogether **/
+    /* Test that no family members are seated together in the same table */
+    [t601] reqNoFamilyMembersSeatedTogether(plan, families) = true,
+    [t602] reqNoFamilyMembersSeatedTogether(planBadSameF, families) = false,
+
+    /** reqEachFamilyMemberSeatedOnce **/
+    /* Test that each family member is seated exactly once */
+    [t701] reqEachFamilyMemberSeatedOnce(plan, families) = true,
+    [t702] reqEachFamilyMemberSeatedOnce(planBadNotAllPer, families) = false,
+
+    /** reqNoEmptyTables **/
+    /* Test if there are no empty tables */
+    [t801] reqNoEmptyTables(plan) = true,
+    [t802] reqNoEmptyTables(planBadEmptyTable) = false,
+
+    /** reqAllFamilyMembersAreSeated **/
+    /* Test if all family members are seated */
+    [t901] reqAllFamilyMembersAreSeated(plan, families) = true,
+    [t902] reqAllFamilyMembersAreSeated(planBadNotAllPer, families) = false,
+
+	  /** allEmpty **/
+    /* Test to check if the families set is empty */
+    [t1001] allEmpty(famBadEmpty) = true,
+    [t1002] allEmpty(families) = false,
+    [t1003] allEmpty(famBadEmptyF) = false,
+
+    /** combine **/
+    /* Test the combination of a table and plan */
+    [t1101] combine(t1, plan) = {t1, t2, t3, t4, t5},
+    [t1102] combine(tBadEmpty, plan) = plan,
+    [t1103] combine(t1, {}) = {t1},
+    
+	  /** interleave **/
+    /* Test interleaving with a non-empty set of families */
+	  [t1201] interleave(families) = {{p11, p6, p3, p1}, {p7, p4, p2}, {p10, p5}, {p8}, {p9}},
+
+	  /* Test interleaving with a single family */
+    [t1202] interleave(famSingleFamily) = {{p7}, {p8}, {p9}, {p10}, {p11}},
+
+    /* Test interleaving with an empty set of families */
+    [t1203] interleave(famBadEmpty) = {},
+
+    /* Test interleaving with families where one family is empty */
+    [t1204] interleave(famBadEmptyF) = {{p11, p6, p3, p1}, {p7, p4, p2}, {p10, p5}, {p8}, {p9}}
+
+
+end

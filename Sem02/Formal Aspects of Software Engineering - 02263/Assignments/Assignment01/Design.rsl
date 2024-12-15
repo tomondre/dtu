@@ -1,0 +1,55 @@
+Basics
+
+scheme Design =
+extend Basics with
+class
+  value
+
+    -- Helper function to check if all the input sets (Families) are empty.
+    -- This function iterates through each families set and checks if they are all empty.
+    -- If all sets are empty, it returns true; otherwise, it returns false.
+    allEmpty: Families -> Bool
+    allEmpty(families) is
+    (
+      all f: Family :- f isin families => f = {}
+    ),
+
+    -- Helper function to combine the current table with plan (tables for far).
+    -- If table set is empty, it returns the plan as is.
+    -- If the plan set is empty, it creates a new set with the first element as the table set.
+    -- Otherwise, it adds the current table to the existing plan.
+    combine: Table >< Plan -> Plan
+    combine(table, plan) is
+    (
+      if table = {} then plan
+      else
+        if plan = {} then
+          { table }
+        else
+          { table } union plan
+        end
+      end
+    ),
+
+    -- Function to interleave the families.
+    -- It recursively processes the input families set, extracting the first element from each non-empty family set,
+    -- and calling itself on the rest of the family members until all sets are empty.
+    -- The combination of current elements and recursive results is done via the combine helper function.
+    interleave : Families -> Plan
+    interleave(families) is
+    (
+      if allEmpty(families) then
+        {}
+      else
+      combine
+      (
+        { hd(f) | f: Family :- f ~= {} /\ f isin families },
+        interleave({ f \ {hd(f)} | f: Family :- f ~= {} /\ f isin families })
+      )
+      end
+    ),
+
+    plan: Families -~-> Plan
+    plan(fs) is interleave(fs)
+    pre isWellformed(fs)
+end

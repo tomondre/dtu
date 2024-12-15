@@ -1,0 +1,11 @@
+Basics
+
+scheme Requirements  =
+extend Basics with 
+class
+  value /* requirement spec */
+    plan : Families -~-> Plan
+    plan(fs) as p 
+    post isCorrectPlan(p, fs)
+    pre isWellformed(fs)
+ end
